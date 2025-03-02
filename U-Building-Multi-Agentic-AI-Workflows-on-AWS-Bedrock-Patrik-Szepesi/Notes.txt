@@ -1,0 +1,128 @@
+Course: Building Multi-Agentic AI Workflows on AWS Bedrock
+Author: Patrik Szepesi
+https://www.udemy.com/course-dashboard-redirect/?course_id=6460497
+GitHub: https://github.com/patrikszepesi/multi-agent-course.git
+
+Preparations:
+git clone https://github.com/aws-samples/bedrock-agents-for-eks.git
+git clone https://github.com/patrikszepesi/multi-agent-course.git
+
+
+# Restaurant Agent
+	Create Restaurant Agent
+		Name: bedrock-restaurant-agent (Multi-agent collaboration is NOT enabled)
+		Select Model: Anthropic Claude 3 Sonnet
+		Instructions for the Agent: Copy & Paste Restaurant Agent Instructions
+		Action Groups -> Add -> "restaurant-action-group"
+			Action Group type -> Define with function details (Not Define with API schemas)
+			Action Group Function 1 -> "list-restaurants"
+				Action Parameters
+					city - The city where the user wants to dine - string - Required
+					fine_dine - Whether the user wants to fine dine or not - string - Required
+				==> Lambda funtion created with "default dummy code template"
+						Set timeout of Lambda to 2 mins
+						Provide S3 access to the Lambda role.
+		"Save & Exit" -> "Prepare"
+		Create Alias -> "restaurant-alias-v1"
+			Alias created with ID
+			
+		
+	Create an S3 Bucket and upload the restaurant.csv
+		aws s3 mb s3://bedrock-agents-bucket-kr --region us-west-2
+		aws s3 cp restaurant.csv s3://bedrock-agents-bucket-kr --region us-west-2
+		aws s3 cp hotel.csv s3://bedrock-agents-bucket-kr --region us-west-2
+		aws s3 cp airbnb.csv s3://bedrock-agents-bucket-kr --region us-west-2
+		
+	Update the code of Lambda Function created
+		Copy and Paste the code from "bedrock-restaurant-lambda.py"
+		Layers -> Add Layer -> AWS Layers -> 
+							   "AWSSDKPandas-Python312" (Version '16')
+		Deploy the Lambda
+		
+	Test the Restaurant Agent
+		Prompt:
+			I want to eat something in Houston
+			I am looking to wear nice suite and new tie
+		
+
+
+# Accomodation Agent
+	Create Accomodation Agent
+		Name: bedrock-accomodation-agent (Multi-agent collaboration is NOT enabled)
+		Select Model: Anthropic Claude 3 Sonnet
+		Instructions for the Agent: Copy & Paste Accomodation Agent Instructions
+		Action Groups -> Add -> "accomodation-action-group"
+			Action Group type -> Define with function details (Not Define with API schemas)
+			# We will have 2 Action Group Functions for this agent but it will create a single Lambda function 
+			Action Group Function 1 -> "list-hotels"
+				Action Parameters
+					location - Location of the hotel - string - Required
+			Action Group Function 2 -> "list-airbnbs"
+				Action Parameters
+					location - Location of the airbnb - string - Required
+					pets - Whether pets are allowed - string - Required
+					pool - Whether a pool is available - string - Required
+					sauna - Whether a sauna is available - string - Required
+				==> Lambda funtion created with "default dummy code template"
+						Set timeout of Lambda to 2 mins
+						Provide S3 access to the Lambda role.						
+		"Save & Exit" -> "Prepare"
+		Create Alias -> "accomodation-alias-v1"
+			Alias created with ID
+			
+	Update the code of Lambda Function created
+		Copy and Paste the code from "bedrock-accommodation-lambda.py"
+		Layers -> Add Layer -> AWS Layers -> 
+							   "AWSSDKPandas-Python312" (Version '16')
+		Deploy the Lambda
+
+	Test the Accomodation Agent
+		Prompt:
+			I want to stay in a hotel in Chicago
+			What about a hotel in Boston
+			I changed my mind, I want to got to airbnb
+			Portland. I want to swim, sweat in a sauna, want to take my cat with me
+			Now can you help with me to find a restaurant in portland?
+			
+# Supervisor Agent
+	Create Supervisor Agent
+		Name: bedrock-supervisor-agent (Multi-agent collaboration is MUST be enabled)
+		Select Model: Anthropic Claude 3 Sonnet
+		Instructions for the Agent: Copy & Paste Supervisor Agent Instructions
+		Multi-agent collaboration -> Agent collaborator (2 in our case)
+										 Collaborator Agent -> bedrock-accomodation-agent
+										 Agent alias -> accomodation-alias-v1
+										 Collaborator name -> "accomodation-collaborator"
+										 Collaborator Instructions -> Copy & Paste from "Accomodation Collaborator" instructions
+										 Enable -> Enable conversation history sharing
+										 
+										 Collaborator Agent -> bedrock-restaurant-agent
+										 Agent alias -> restaurant-alias-v1
+										 Collaborator name -> "restaurant-collaborator"
+										 Collaborator Instructions -> Copy & Paste from "Restaurant Collaborator" instructions
+										 Enable -> Enable conversation history sharing			
+					
+		"Save & Exit" -> "Prepare"
+		Create Alias -> "supervisor-alias-v1"
+			Alias created with ID 
+
+	Test the Supervisor Agent
+		Prompt:
+			I want fine dine in Budapest
+			Help me find an airbnb in Austin that is pet friendly. I don't need pool or sauna
+			
+# Invocation of supervisor agent using Lambda
+	Create Lambda -> "invoke-supervisor-agent"
+		Copy & Paste code from "invoke-supervisor-agent.py" (Use Supervisor Agent ID and "supervisor-alias-v1")
+		Set timeout to 2 mins
+		Provide "AdministratorAccess" to Lambda role
+		
+		
+# API Gateway
+	Create API -> HTTP API -> "bedrock-agents-api" -> Create
+		Route -> POST - /get-agents-response
+			Attach Integration -> Select Lambda Function "invoke-supervisor-agent"
+			
+
+	
+		
