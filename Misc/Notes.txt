@@ -1,0 +1,2 @@
+https://aws.amazon.com/blogs/machine-learning/indian-language-rag-with-cohere-multilingual-embeddings-and-anthropic-claude-3-on-amazon-bedrock/ (Indian language RAG with Cohere multilingual embeddings and Anthropic Claude 3 on Amazon Bedrock)
+https://aws.amazon.com/blogs/publicsector/how-to-build-a-multilingual-document-summarization-application-using-amazon-bedrock/ (How to build a multilingual document summarization application using Amazon Bedrock)
