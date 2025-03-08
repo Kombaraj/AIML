@@ -8,7 +8,7 @@ def get_configuration(inputImage: str):
     return json.dumps({
     "taskType": "INPAINTING",
     "inPaintingParams": {
-        "text": "Make the cat black and blue",
+        "text": "Make the cat's eyes to black and blue",
         "negativeText": "bad quality, low res",
         "image": inputImage,
         "maskPrompt": "cat"

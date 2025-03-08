@@ -53,14 +53,15 @@ Section 3: Working with Text Models
 
 
 Section 4: Working with Image Models
-	py/src/images/stability.py
+	python3 py/src/images/stability.py
 
-	py/src/images/titan/generate.py
-	py/src/images/titan/inpaint.py
+	python3 py/src/images/titan/generate.py
+	python3 py/src/images/titan/inpaint.py
 
 Section 5: Amazon Bedrock Embedding Models
 
-py/src/embed/sample.py
+# Simple Embedding 
+python3 py/src/embed/sample.py
 
 Text Embedding:
 python3 \src\embed\text.py
