@@ -64,13 +64,19 @@ Section 5: Amazon Bedrock Embedding Models
 python3 py/src/embed/sample.py
 
 Text Embedding:
-python3 \src\embed\text.py
+python3 py/src/embed/text.py
 
 Image Embedding:
-python3 \src\embed\image.py
+cd py/src/embed
+python3 image.py
 
 Vector Database:
-
+	* Pinecone
+	* Chroma
+	* Redis
+	* Amazon OpenSearch Service
+	* Amazon Aurora PostgreSQL
+	
 
 Section 7: Project RAG
 

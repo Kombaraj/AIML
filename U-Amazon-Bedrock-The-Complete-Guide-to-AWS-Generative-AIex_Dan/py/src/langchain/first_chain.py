@@ -9,9 +9,9 @@ bedrock = boto3.client(service_name="bedrock-runtime", region_name=AWS_REGION)
 model = Bedrock(model_id="amazon.titan-text-express-v1", client=bedrock)
 
 
-def invoke_model():
-    response = model.invoke("What is the highest mountain in the world?")
-    print(response)
+# def invoke_model():
+#     response = model.invoke("What is the highest mountain in the world?")
+#     print(response)
 
 
 def fist_chain():
@@ -19,14 +19,14 @@ def fist_chain():
         [
             (
                 "system",
-                "Write a short description for the product provided by the user",
+                "Write a short description of the animal provided by the user",
             ),
-            ("human", "{product_name}"),
+            ("human", "{animal_name}"),
         ]
     )
     chain = template.pipe(model)
 
-    response = chain.invoke({"product_name": "bicycle"})
+    response = chain.invoke({"animal_name": "Tiger"})
     print(response)
 
 

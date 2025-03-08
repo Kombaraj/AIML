@@ -7,9 +7,9 @@ from similarity import cosineSimilarity
 client = boto3.client(service_name='bedrock-runtime', region_name="us-west-2")
 
 images = [
-    'images/1.png',
-    'images/2.png',
-    'images/3.png',
+    '../../images/1.png',
+    '../../images/2.png',
+    '../../images/3.png',
 ]
 
 def getImagesEmbedding(imagePath: str):
@@ -35,7 +35,7 @@ for image in images:
         'embedding': getImagesEmbedding(image)
     })
 
-test_image = 'images/cat.png'
+test_image = '../../images/cat.png'
 
 test_image_embedding = getImagesEmbedding(test_image)
 
