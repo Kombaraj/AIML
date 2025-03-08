@@ -12,9 +12,11 @@ Section 2 - Introduction to Amazon Bedrock & Tools setup
 python environment setup
 
 #### Create environment
+```
 python3 -m venv .venv
-# .venv folder will be created
-# add ".venv" in .gitignore file
+```
+.venv folder will be created
+add ".venv" in .gitignore file
 
 # Activate environment
 # Windows
