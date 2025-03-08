@@ -27,7 +27,8 @@ source .venv/bin/activate
 
 pip install -r requirements.txt
 
-
+# List all Foundation Models
+python3 py/src/intro/starter.py
 
 Section 3: Working with Text Models
 
@@ -41,10 +42,10 @@ Section 3: Working with Text Models
 		High temperature - bigger risk of nonsensical / irrelevant content / halucinations
 		
 
-	py/src/text/generate.py
-	py/src/text/summary.py
-	py/src/text/no_history_chat.py
-	py/src/text/history_chat.py
+	python3 py/src/text/generate.py
+	python3 py/src/text/summary.py
+	python3 py/src/text/no_history_chat.py
+	python3 py/src/text/history_chat.py
 
 
 Section 4: Working with Image Models
