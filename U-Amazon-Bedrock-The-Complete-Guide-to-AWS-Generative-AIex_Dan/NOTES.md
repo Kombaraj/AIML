@@ -41,9 +41,13 @@ Section 3: Working with Text Models
 			* 1 - more creative results
 		High temperature - bigger risk of nonsensical / irrelevant content / halucinations
 		
-
+	# Generic Prompt
 	python3 py/src/text/generate.py
+
+	# Text Summarization
 	python3 py/src/text/summary.py
+	
+	# Mini Chat
 	python3 py/src/text/no_history_chat.py
 	python3 py/src/text/history_chat.py
 
