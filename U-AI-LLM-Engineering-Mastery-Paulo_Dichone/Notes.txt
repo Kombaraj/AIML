@@ -1,0 +1,21 @@
+Course: Udemy - AI & LLM Engineering Mastery
+Author: Paulo Dichone
+Code: https://github.com/pdichone/ai-llm-engineer-course
+
+Section 1 - Introduction
+
+Section 2 - Developement Environment Setup
+	Python
+	VS Code
+		Python Extension Pack - Don Jayamanne (7 extensions in 1 including Python from Microsoft extension)
+	Hello World Python
+	
+Section 3 - Download Source Code
+	Code: https://github.com/pdichone/ai-llm-engineer-course
+	
+Section 4 & Section 5 - Python Deep Dive
+	Python Course Code: https://github.com/pdichone/python-mastery-course-fundamentals
+	
+
+Section 6 - Deep and Machine Learning
+
