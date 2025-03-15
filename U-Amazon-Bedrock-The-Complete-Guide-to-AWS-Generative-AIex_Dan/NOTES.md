@@ -7,29 +7,30 @@ GitHub: https://github.com/alexhddev/Bedrock_course.git
 Section 2 - Introduction to Amazon Bedrock & Tools setup
 	Amazon Bedrock - Console overview
 	Setup for SDK access
+	Create IAM user and configure
+	
+	===> py\src\intro\steps.txt
 
-===> py\src\intro\steps.txt
+	python environment setup
 
-python environment setup
+	#### Create environment
+	```
+	python3 -m venv .venv
+	```
+	.venv folder will be created
+	add ".venv" in .gitignore file
 
-#### Create environment
-```
-python3 -m venv .venv
-```
-.venv folder will be created
-add ".venv" in .gitignore file
+	# Activate environment
+	# Windows
+	.venv\Scripts\activate
 
-# Activate environment
-# Windows
-.venv\Scripts\activate
+	# Linux
+	source .venv/bin/activate
 
-# Linux
-source .venv/bin/activate
+	pip install -r requirements.txt
 
-pip install -r requirements.txt
-
-# List all Foundation Models
-python3 py/src/intro/starter.py
+	# List all Foundation Models
+	python3 py/src/intro/starter.py
 
 Section 3: Working with Text Models
 
