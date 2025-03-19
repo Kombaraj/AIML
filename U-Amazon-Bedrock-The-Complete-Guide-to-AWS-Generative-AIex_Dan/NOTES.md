@@ -1,4 +1,4 @@
-Learning: Udemy
+		Learning: Udemy
 Course: Amazon Bedrock - The Complete Guide to AWS Generative AI
 Author: Alex Dan
 GitHub: https://github.com/alexhddev/Bedrock_course.git
@@ -8,13 +8,15 @@ Section 2 - Introduction to Amazon Bedrock & Tools setup
 	Amazon Bedrock - Console overview
 	Setup for SDK access
 	Create IAM user and configure
-	
-	===> py\src\intro\steps.txt
 
+	===> py\src\intro\steps.txt
+    
 	python environment setup
 
 	#### Create environment
+	
 	```
+	cd py
 	python3 -m venv .venv
 	```
 	.venv folder will be created
