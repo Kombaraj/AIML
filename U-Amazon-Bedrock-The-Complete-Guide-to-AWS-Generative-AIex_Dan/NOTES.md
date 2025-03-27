@@ -1,4 +1,4 @@
-		Learning: Udemy
+Learning: Udemy
 Course: Amazon Bedrock - The Complete Guide to AWS Generative AI
 Author: Alex Dan
 GitHub: https://github.com/alexhddev/Bedrock_course.git
