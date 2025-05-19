@@ -1,0 +1,62 @@
+PART 1: Introduction to AI/ML and SageMaker
+	Day 1: AWS Account Setup
+	Day 2: AI/ML Fundamentals
+	Day 3: Introduction to SageMaker
+
+PART 2: Data Labelling in AWS
+	Day 4: Labelling Data with AWS SageMaker GroundTruth
+	Day 5: Labelling Text, Bounding Boxes & Semantic Segmentation in AWS SageMaker GroundTruth
+
+PART 3: Exploratory Data Analysis (EDA)
+	Day 6: Crash course on Pandas - Part 1
+	Day 7: Crash course on Pandas - Part 2
+	Day 8: Crash course on Pandas - Part 3
+	Day 9: Data Visualization
+		Matplotlib Overview
+		Seaborn Overview
+	Day 10: Amazon SageMaker Data Wrangler
+	
+PART 4: Machine Learning Regression
+	Day 11: Simple Linear Multiple -> Scikit-Learn
+	Day 12: Simple Linear Regression -> SageMaker Linear Learner
+	Day 13: Multiple Linear Regression -> Scikit-Learn
+	Day 14: Multiple Linear Regression -> SageMaker Linear Learner
+	Day 15: ML Training Job Regression -> using AWS Management Console
+	Day 16: XG-Boost Regression -> Scikit-Learn
+	Day 17: XG-Boost Regression -> SageMaker
+	Day 18: AWS SageMaker JumpStart
+
+PART 5: Hyperparameters Optimization
+	Day 19: GridSearch, Bayesian & Random
+	Day 20: Hyperparameters Optimization in SageMaker
+	
+PART 6: Machine Learning Classification & ChatGPT
+	Day 21: Classifiers - SVM, KNN, Logistic Regression, Naive Bayes, Random Forest
+	Day 22: XG-Boost Classification in SageMaker
+	Day 23: K Nearest Neighbors (KNN) in SageMaker
+	Day 24: ChatGPT for Programmers
+
+PART 7: AutoML & NoCode ML
+	Day 25: No-Code ML -> AutoGlucon for Regression Type Problems
+	Day 26: No-Code ML -> AutoGlucon for Classification Type Problems
+	Day 27: No-Code ML -> Amazon SageMaker AutoPilot
+	Day 28: No-Code ML -> Amazon SageMaker Canvas for Classification & Regression Tasks
+	
+PART 8: Machine Learning Workflows 
+	Day 29: Lambda Functions using AWS Console
+	Day 30: Lambda Functions using AWS SageMaker Boto3 SDK
+
+
+
+
+PART 5: Hyperparameters Optimization
+	We will learn
+		1) Hyperparameters optimization strategies such as GridSearch, Randomized Search Bayesian Optimization
+		2) Understand Bias Variance Trade-Off and L1 & L2 regularization
+		3) Perform Hyperparameters Optimization using Scikit-Learn and SageMaker SDK
+		
+	
+
+
+
+

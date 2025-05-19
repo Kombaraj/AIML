@@ -1,0 +1,90 @@
+# Setting Up the Environment
+
+# Importing necessary libraries
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
+
+# Display settings
+%matplotlib inline
+
+# Uploading and Loading Your Dataset
+
+# Load the dataset
+data = pd.read_csv('/mnt/data/Salary_dataset.csv')  # Adjust the path accordingly
+
+# Display the first few rows of the dataset
+data.head()
+
+# Data Exploration
+
+# Get basic information about the dataset
+data.info()
+
+# Summary statistics
+data.describe()
+
+# Data Visualization
+
+# Scatter plot of YearsExperience vs Salary
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x='YearsExperience', y='Salary', data=data)
+plt.title('Years of Experience vs Salary')
+plt.xlabel('Years of Experience')
+plt.ylabel('Salary')
+plt.show()
+
+# Simple Linear Regression Model
+
+# Defining the features (X) and target (y)
+X = data[['YearsExperience']]
+y = data['Salary']
+
+# Splitting the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Training the model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Making predictions
+y_pred = model.predict(X_test)
+
+# Evaluating the model
+mse = mean_squared_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+print(f"Mean Squared Error: {mse}")
+print(f"R^2 Score: {r2}")
+
+# Plotting the regression line with the data
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x='YearsExperience', y='Salary', data=data)
+plt.plot(X_test, y_pred, color='red', linewidth=2)
+plt.title('Years of Experience vs Salary with Regression Line')
+plt.xlabel('Years of Experience')
+plt.ylabel('Salary')
+plt.show()
+
+# Conclusion and Next Steps
+
+# Conclusion
+
+"""
+In this demo, we explored a salary dataset, visualized the relationship between years of experience and salary, 
+and built a simple linear regression model to predict salary based on years of experience. We evaluated the model 
+using Mean Squared Error and R^2 Score, and visualized the regression line.
+
+## Next Steps
+
+- **Data Preprocessing**: Explore data cleaning and preprocessing techniques.
+- **Feature Engineering**: Create new features to improve model performance.
+- **Advanced Models**: Try more complex models like polynomial regression or decision trees.
+- **Model Evaluation**: Use different metrics and cross-validation techniques to evaluate models.
+- **Deployment**: Deploy the model using SageMaker's deployment features.
+
+Thank you for following this demo! Feel free to reach out if you have any questions or need further assistance.
+"""

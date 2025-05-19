@@ -1,0 +1,113 @@
+import json
+import urllib.request
+
+def fetch_exchange_rate(base_code, target_code):
+    api_url = f"https://open.er-api.com/v6/latest/{base_code}"
+    try:
+        with urllib.request.urlopen(api_url) as response:
+            if response.status == 200:
+                data = json.loads(response.read())
+                print("API Response:", json.dumps(data, indent=2))  # Log the API response
+                if data['result'] == 'success':
+                    exchange_rate = data['rates'].get(target_code)
+                    if exchange_rate:
+                        return exchange_rate, None
+                    else:
+                        return None, f"Exchange rate for {target_code} not found."
+                else:
+                    return None, f"Error in response: {data.get('error-type', 'Unknown error')}"
+            else:
+                return None, f"Failed to fetch data from the exchange rate API. HTTP Status code: {response.status}"
+    except Exception as e:
+        print("Error occurred:", str(e))  # Log the error
+        return None, f"Error occurred: {str(e)}"
+
+def lambda_handler(event, context):
+    print("Received event:", json.dumps(event))  # Log the incoming event for debugging
+
+    try:
+        # Handle parameters from the event
+        parameters = event.get('parameters', [])
+        if isinstance(parameters, dict):
+            # If parameters are passed as a dictionary (testing scenario)
+            base_code = parameters.get('base_code')
+            target_code = parameters.get('target_code')
+        else:
+            # If parameters are passed as a list (Bedrock format)
+            param_dict = {param['name']: param['value'] for param in parameters}
+            base_code = param_dict.get('base_code')
+            target_code = param_dict.get('target_code')
+
+        if not base_code or not target_code:
+            return {
+                'messageVersion': '1.0',
+                'response': {
+                    'actionGroup': event['actionGroup'],
+                    'function': event['function'],
+                    'functionResponse': {
+                        'responseState': 'REPROMPT',
+                        'responseBody': {
+                            'TEXT': {
+                                'body': 'base_code and target_code parameters are required.'
+                            }
+                        }
+                    }
+                }
+            }
+
+        exchange_rate, error = fetch_exchange_rate(base_code, target_code)
+        if error:
+            return {
+                'messageVersion': '1.0',
+                'response': {
+                    'actionGroup': event['actionGroup'],
+                    'function': event['function'],
+                    'functionResponse': {
+                        'responseState': 'FAILURE',
+                        'responseBody': {
+                            'TEXT': {
+                                'body': error
+                            }
+                        }
+                    }
+                }
+            }
+
+        response_body = {
+            'TEXT': {
+                'body': f"The exchange rate from {base_code} to {target_code} is {exchange_rate}."
+            }
+        }
+
+        action_response = {
+            'actionGroup': event['actionGroup'],
+            'function': event['function'],
+            'functionResponse': {
+                'responseBody': response_body
+            }
+        }
+
+        return {
+            'messageVersion': '1.0',
+            'response': action_response,
+            'sessionAttributes': event.get('sessionAttributes', {}),
+            'promptSessionAttributes': event.get('promptSessionAttributes', {})
+        }
+
+    except Exception as e:
+        print("Error:", str(e))  # Log the error
+        return {
+            'messageVersion': '1.0',
+            'response': {
+                'actionGroup': event['actionGroup'],
+                'function': event['function'],
+                'functionResponse': {
+                    'responseState': 'FAILURE',
+                    'responseBody': {
+                        'TEXT': {
+                            'body': str(e)
+                        }
+                    }
+                }
+            }
+        }

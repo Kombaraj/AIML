@@ -1,0 +1,109 @@
+
+
+Week 1:
+    Day 1:
+        Summary
+            Run models locally with Ollama
+            Write code to call OpenAI's frontier models
+            Distinguish between the System and User prompt
+            Summarization
+        week1/day1.ipynb
+        Setup Ollama for local LLM Deployment
+        Setup Anaconda
+            Create Virtual Environment 
+                conda env create -f .\environment.yml
+                conda init   (May need to close and open VS Code)
+                conda activate llms
+                conda deactivate
+
+        Setup  OpenAI API for LLM Development
+        Create .env file for storing API Keys
+        Text Summarization using OpenAI's GPT-4 (week1/day1.ipynb)
+
+    Day 2:
+        Summary
+            Know the building blocks to get to LLM mastery
+            Recognize the leading Frontier Models and how to use them
+        Closed-Source Frontier
+            GPT from OpenAI
+            Claude from Anthropic
+            Gemini from Google
+            Command R from Cohere
+            Perplexity
+        Open-Source Frontier
+            Llama from Meta
+            Mixtral from Mistral
+            Qwen from Alibaba Cloud
+            Gemma from Google
+            Phi from Microsoft
+        Three ways to use models
+            Chat Interfaces (Like ChatGPT)
+            Cloud APIs (LLM API)
+                Frameworks like LangChain
+                Amazon Bedrock
+                Google Vertex
+                Azure ML
+            Direct Inference
+                With the HuggingFace (Transformers library)
+                With Ollama to run locally
+    Day 3:
+        Summary
+            Compare the top 6 Frontier Models
+            Identify Goodness / Struggle of them
+        chatgpt.com walkthrough
+            GPT-4o vs O1 Preview
+            GPT-4o's Canvas Feature (Coding example)
+        claude.ai walkthrough
+        gemini.google.com walkthrough
+        dashboard.cohere.com walkthrough
+        meta.ai walkthrough
+        dashboard.cohere.com walkthrough
+        perplexity.ai walkthrough
+    Day 4:
+        Summary
+            The rise of the Transformer
+            Explain Custom GPTs, Copilots and Agents
+            Understand tokens, context windows, parameters, API cost
+        Understanding LLM Parameters 
+            Parameters are the weights in the neural network that the model learns during training.
+            The more parameters a model has, the more complex patterns and relationships it can potentially understand and generate.
+        GPT Tokens
+            A token is the basic unit of text that the model processes. Tokens are essentially chunks of text that can represent words, parts of words, or even punctuation marks, depending on how the text is tokenized.
+            https://platform.openai.com/tokenizer
+        Context Window
+            The context window refers to the maximum amount of text, measured in tokens, that the model can process at one time when generating or understanding language.
+        Costs
+            Chat Interfaces have plans with monthly subscription
+            APIs typically have no subscription, but charge per API call. The cost is based on the number if input tokens & output tokens
+        Compare LLM Context Windows and Pricing
+            vellum.io
+    Day 5:
+        Summary
+            Confidently code with the OpenAI API
+            Use one-shot prompting, streaming, markdown & json results
+            Implement a business solution - in a matter of minutes
+        Business Problem - Company Sales Brochure Generator
+            BeautifulSoup - To scrap the website (week1/day5.ipynb)
+        One-shot prompting
+            - involves providing the model with a single example (or "shot") of the task to be performed before presenting the query
+            
+
+
+
+
+Week 2: Build a Multi-Modal Chatbot: LLMs. Gradio UI and Agents
+    Day 1:
+        week2/day1.ipynb
+    Day 2:
+        Summary
+            Describe Gradio - remarkable platform for data science UIs
+            Create a simple UI using Gradio
+            Hook up Gradio to Frontier models
+            https://www.gradio.app/
+        week2/day2.ipynb
+    Day 3:
+        Summary
+            Create a Chat UI in Gradio
+            Provide conversation history in a prompt
+            Build your first customer support assistant
+            

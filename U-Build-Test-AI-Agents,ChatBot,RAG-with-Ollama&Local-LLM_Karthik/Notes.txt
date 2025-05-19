@@ -1,0 +1,72 @@
+Section 1: Introduction to LangChain
+    langchain.com
+        Products: 
+            LangChain - is an open source framework for building applications based on large language models (LLMs).
+            LangSmith - is an unified observability & evals platform where teams can debug, test, and monitor AI app performance.
+            LangGraph - is an open source AI agent framework designed to build, deploy and manage complex generative AI agent workflows.
+Section 2: Source code
+Section 3: Running LLM in local machine with Ollama
+    https://ollama.com/
+    Ollama - is a tool designed to simplify the process of running open-source large language models (LLMs) directly on your computer.
+    Run Llama 3.3, DeepSeek-R1, Phi-4, Mistral, Gemma 3, and other models, locally.
+    Using Ollama models in Command Prompt
+        $ ollama list  ==> Lists all models in local machine
+        $ ollama run deepseek-r1    (Pull & Run LLM)
+            > Write a poem.
+            > /bye ==> Exit from the model
+
+    Using Ollama models in GUI
+        Third party tools
+            Msty
+            gpt4all
+    More commandline commands
+        ollama pull deepseek-r1
+        ollama show deepseek-r1  ==> details about model
+        ollama rm deepseek-r1
+    Ollama running as service to consume as API request
+        $ ollama serve
+                http://localhost:11434
+                POSTMAN or curl
+                    curl http://localhost:11434/api/generate -d '{
+                        "model": "llama3.2",
+                        "prompt": "Why is the sky blue?"
+                    }'
+Section 4: Understanding LangChain Basics
+    First LangChain code
+        Section1_Basics/LangchainBasics.ipynb
+
+        python -m venv venv
+        ./venv/Scripts/activate => Windows
+        ./venv/bin/activate     => Mac
+        pip install -r .\requirements.txt
+
+    Working with PromptTemplate
+    Working with ChatPromptTemplate
+    Working with MessagePromptTemplate
+
+Section 5: LangChain Chains and Runnables
+    Section2_ChainingAndRunnables/ChainingAndRunnables.ipynb
+    Chaining in LangChain
+    Chaining with StrOutputParser
+    Working with Multiple Chains
+    Working with RunnableParallel
+    Working with RunnableLambda
+    Creating custom Chain with @chain decorator (This is simple and replaces RunnableLambda)
+
+Section 6: Chat message history with LangChain
+    Section3_ChatHistory/ChatMessageHistory.ipynb
+    Create Chat message history
+    Run Chat message history
+    Store Chat message history
+
+Section 7: Build ChatBot with LangChain & Streamlit
+    Initial setup of Streamlit application
+        pip install streamlit
+        cd Section4_BuildingChatBots
+        streamlit run Chatbot.py
+    Create Session history for Chat (Chatbot.py)
+        
+Section 8: Build RAG Application
+    Section5_RAGWithDocuments/RagForPDF.ipynb
+    Document Loaders: https://python.langchain.com/v0.1/docs/modules/data_connection/document_loaders/
+    

@@ -1,0 +1,18 @@
+LLM Engineering in 8 Weeks
+
+Week 1: Build your first LLM Product: Explore Top Models & Transformers
+
+Week 2: Build a Multi-Modal ChatBot: LLMs, Gradio UI and Agents in Action
+
+Week 3: Open-Source Gen AI: Building Automated Solutions with HuggingFace
+
+Week 4: LLM Showdown: Evaluating Models for Code Generation & Business Tasks
+
+Week 5: Mastering RAG: Build Advanced Solutions with Vector Embeddings & LangChain
+
+Week 6: Fine-tuning Frontier LLMs with LoRA/QLoRA
+
+Week 7: Fine-tuned Open-Source model to compete with Frontier in price prediction
+
+Week 8: Build Autonomous Multi Agent system colloborating with Models
+
